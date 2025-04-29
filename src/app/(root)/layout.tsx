@@ -1,12 +1,18 @@
 import Navbar from "@/components/Navbar.";
-
-export default function RootLayout({
+import { isAuthenticated } from "@/lib/actions/auth.action";
+import { redirect } from "next/navigation";
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="lg:px-42">
-    <Navbar />
-    {children}
-    </div>;
+  const isUserAuthenticated = await isAuthenticated();
+
+  if (!isUserAuthenticated) redirect("/signin");
+  return (
+    <div className="px-5 lg:px-42">
+      <Navbar />
+      {children}
+    </div>
+  );
 }

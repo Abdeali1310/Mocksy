@@ -1,21 +1,21 @@
-import React from 'react'
-import {Button} from "@/components/ui/button";
+import React from "react";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import {dummyInterviews} from "@/constants";
+import { dummyInterviews } from "@/constants";
 import InterviewCard from "@/components/InterviewCard";
 const HomePage = () => {
   return (
     <>
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
-          <h2>Get Interview-Ready with AI-Powered Practice & Feedback</h2>
+          <h2>Sharpen Your Interview Skills with AI-Powered Mock Sessions</h2>
           <p className="text-lg">
-            Practice on real interview questions & get instant feedback
+            Tackle real-world questions and receive instant, actionable insights
           </p>
 
           <Button asChild className="btn-primary max-sm:w-full">
-            <Link href="/interview">Start an Interview</Link>
+            <Link href="/interview">Begin Mock Interview</Link>
           </Button>
         </div>
 
