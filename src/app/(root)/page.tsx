@@ -18,8 +18,8 @@ const HomePage = async () => {
     <>
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
-          <h2>Sharpen Your Interview Skills with AI-Powered Mock Sessions</h2>
-          <p className="text-lg">
+          <h2 className="text-xl xl:text-3xl">Sharpen Your Interview Skills with AI-Powered Mock Sessions</h2>
+          <p className="text-sm md:text-md xl:text-xl">
             Tackle real-world questions and receive instant, actionable insights
           </p>
 

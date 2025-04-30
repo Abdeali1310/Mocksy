@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
 import {interviewer} from "@/constants";
+import { createFeedback } from "@/lib/actions/general.action";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -62,13 +63,12 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
     };
   }, []);
   const handleGenerateFeedback = async (messages: SavedMessages[]) => {
-    console.log('Generate feedback here.');
 
-    // TODO: Create a server action that generates feedback
-    const { success, id } = {
-        success: true,
-            id: 'feedback-id'
-    }
+    const { success, feedbackId:id } = await createFeedback({
+      interviewId:interviewId!,
+      userId:userId!,
+      transcript:messages!
+    })
 
     if(success && id) {
         router.push(`/interview/${interviewId}/feedback`);
@@ -154,7 +154,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
         </div>
       </div>
       {messages.length > 0 && (
-        <div className="transcript-border">
+        <div className="transcript-border my-3">
           <div className="transcript">
             <p
               key={latestMessage}
@@ -171,7 +171,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
 
       <div className="w-full flex justify-center">
         {callStatus !== "ACTIVE" ? (
-          <button className="relative btn-call" onClick={handleCall}>
+          <button className="relative my-8 btn-call" onClick={handleCall}>
             <span
               className={cn(
                 "absolute animate-ping rounded-full opacity-75",
@@ -186,7 +186,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
             </span>
           </button>
         ) : (
-          <button className="btn-disconnect" onClick={handleDisconnect}>End</button>
+          <button className="btn-disconnect my-8" onClick={handleDisconnect}>End</button>
         )}
       </div>
     </>
