@@ -10,7 +10,7 @@ export default async function RootLayout({
 
   if (!isUserAuthenticated) redirect("/signin");
   return (
-    <div className="px-5 lg:px-42">
+    <div className="px-5 md:px-32 xl:px-42">
       <Navbar />
       {children}
     </div>
