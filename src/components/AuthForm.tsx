@@ -10,7 +10,7 @@ import { Form } from "@/components/ui/form";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import FormField from "./FormField.";
+import FormField from "./FormField";
 import { toast } from "sonner";
 import {
   createUserWithEmailAndPassword,

@@ -5,6 +5,7 @@ import Image from "next/image";
 import InterviewCard from "@/components/InterviewCard";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewsByUserId, getLatestInterviews } from "@/lib/actions/general.action";
+import Footer from "@/components/Footer";
 const HomePage = async () => {
   const user = await getCurrentUser();
 
@@ -18,7 +19,7 @@ const HomePage = async () => {
     <>
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
-          <h2 className="text-xl xl:text-3xl">Sharpen Your Interview Skills with AI-Powered Mock Sessions</h2>
+          <p className="font-bold text-xl xl:text-3xl">Sharpen Your Interview Skills with AI-Powered Mock Sessions</p>
           <p className="text-sm md:text-md xl:text-xl">
             Tackle real-world questions and receive instant, actionable insights
           </p>
@@ -54,9 +55,14 @@ const HomePage = async () => {
         <div className="interviews-section">
         {hasUpcomingInterviews ?  (latestInterviews?.map((interview) => (
             <InterviewCard {...interview} key={interview.id} />
-          ))) : <p>There are no new interviews available</p>}
+          ))) : <h4>There are no new interviews available</h4>}
         </div>
       </section>
+
+      <footer>
+      <Footer />
+
+      </footer>
     </>
   );
 };

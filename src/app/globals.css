@@ -147,6 +147,7 @@
   p {
     @apply text-light-100;
   }
+  
   h2 {
     @apply text-3xl font-semibold;
   }

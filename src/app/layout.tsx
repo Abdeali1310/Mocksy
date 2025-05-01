@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {  Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -18,12 +19,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+
+
+    <html lang="en" className="suppressHydrationWarning">
       <body
         className={`${spaceGrotesk.className} antialiased pattern`}
       >
         {children}
       </body>
     </html>
+        </ThemeProvider>
   );
 }
